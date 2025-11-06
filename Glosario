@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Glosario de propiedades CSS </title>
+  <style>
+    /* ===== Estilos globales ===== */
+    :root{
+      --primario: #0b5fff;
+      --fondo: #f5f7fb;
+      --panel: #ffffff;
+      --gris: #6b7280;
+      --sombra: 0 6px 18px rgba(20,20,40,0.06);
+      --radio: 10px;
+    }
+
+    body{
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--fondo), #ffffff);
+      margin: 0;
+      padding: 28px;
+      color: #111827;
+      line-height: 1.45;
+    }
+
+    .container{
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header{
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    header h1{
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    p.lead{
+      margin: 6px 0 18px 0;
+      color: var(--gris);
+    }
+
+    /* ===== Panel principal y tabla glosario ===== */
+    .panel{
+      background: var(--panel);
+      border-radius: var(--radio);         /* border-radius */
+      box-shadow: var(--sombra);
+      padding: 18px;
+      margin-bottom: 22px;
+      border: 2px solid rgba(11,95,255,0.06); /* border (ejemplo visual) */
+    }
+
+    table.glossary{
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;                    /* text-align */
+      font-size: 0.95rem;
+    }
+
+    table.glossary th,
+    table.glossary td{
+      padding: 10px 12px;                  /* padding */
+      border-bottom: 1px solid #eef2ff;    /* border (solo bottom para separar filas) */
+      vertical-align: middle;
+    }
+
+    table.glossary th{
+      font-weight: 700;
+      background: linear-gradient(90deg, rgba(11,95,255,0.06), transparent);
+    }
+
+    code.kv{
+      background: #0f172a10;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+      font-size: .9rem;
+      display: inline-block;
+    }
+
+    /* ===== Zona de ejemplos visuales ===== */
+    .examples{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .example{
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+      padding: 14px;
+      border-radius: 12px;                 /* border-radius */
+      box-shadow: 0 8px 20px rgba(10,10,30,0.04);
+      border: 1px solid #e6eefb;           /* border */
+    }
+
+    .box-sample{
+      padding: 12px;                       /* padding */
+      margin: 10px 0 0 0;                  /* margin */
+      border-radius: 8px;                  /* border-radius */
+      text-align: center;                  /* text-align */
+    }
+
+    /* Ejemplo de color de texto y background */
+    .ex-color .box-sample{ color: blue; } /* color */
+    .ex-bg .box-sample{ background: linear-gradient(90deg,#e6f0ff,#ffffff); }
+
+    /* Ejemplo border shorthand */
+    .ex-border .box-sample{ border: 2px solid black; }
+
+    /* Ejemplo de margin/padding combinados */
+    .ex-space .box-sample{ margin: 10px 5px 10px 5px; padding: 10px; }
+
+    /* Ejemplo de background-size */
+    .ex-bgimg .box-sample{
+      background-image: url('data:image/svg+xml;utf8,\
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="120">\
+        <rect width="100%" height="100%" fill="%23e6f0ff"/>\
+        <circle cx="60" cy="60" r="40" fill="%230b5fff" fill-opacity="0.16"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; /* background-size */
+      min-height: 90px;
+    }
+
+    /* Ejemplo text-decoration */
+    .ex-td .box-sample{ text-decoration: underline; } /* text-decoration */
+
+    /* Ejemplo float (se muestra junto al texto) */
+    .ex-float .float-box{
+      float: left; /* float */
+      width: 110px;
+      height: 60px;
+      margin-right: 12px;
+      background: linear-gradient(180deg,#fff,#eef6ff);
+      border-radius: 8px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:.9rem;
+    }
+
+    /* Limpieza de floats en el contenedor */
+    .ex-float::after{ content:""; display:block; clear:both; }
+
+    /* Responsive: reduce padding en pantallas pequeñas */
+    @media (max-width:520px){
+      body{ padding: 16px; }
+      header h1{ font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Glosario de propiedades CSS </h1>   </header>
+
+    <p class="lead">Abajo verás la lista de propiedades, su descripción y ejemplos de valor. También tenemos ejemplos visuales que usan esas mismas propiedades dentro del <code class="kv">&lt;style&gt;</code>.</p>
+
+    <section class="panel" aria-labelledby="glosario-title">
+      <h2 id="glosario-title" style="margin-top:0">Glosario</h2>
+
+      <table class="glossary" role="table" aria-describedby="glosario-title">
+        <thead>
+          <tr>
+            <th>Propiedad</th>
+            <th>Descripción</th>
+            <th>Ejemplo de valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code class="kv">color</code></td>
+            <td>Color del texto.</td>
+            <td><code class="kv">blue</code>, <code class="kv">#0000FF</code>, <code class="kv">rgb(0, 0, 255)</code></td>
+          </tr>
+          <tr>
+            <td><code class="kv">border</code></td>
+            <td>Abreviatura para ancho, estilo y color del borde.</td>
+            <td><code class="kv">2px solid black</code></td>
+          </tr>
+          <tr>
+            <td><code class="kv">border-radius</code></td>
+            <td>Redondea las esquinas del borde.</td>
+            <td><code class="kv">10px</code>, <code class="kv">50%</code></td>
+          </tr>
+          <tr>
+            <td><code class="kv">margin</code></td>
+            <td>Espacio exterior alrededor del elemento.</td>
+            <td><code class="kv">10px 5px 10px 5px</code> (arriba, derecha, abajo, izquierda)</td>
+          </tr>
+          <tr>
+            <td><code class="kv">padding</code></td>
+            <td>Espacio interior entre el borde y el contenido.</td>
+            <td><code class="kv">padding-top: 10px;</code>, <code class="kv">padding: 12px;</code></td>
+          </tr>
+          <tr>
+            <td><code class="kv">text-align</code></td>
+            <td>Alineación horizontal del texto dentro del elemento.</td>
+            <td><code class="kv">center</code>, <code class="kv">justify</code></td>
+          </tr>
+          <tr>
+            <td><code class="kv">background-size</code></td>
+            <td>Tamaño de la imagen de fondo.</td>
+            <td><code class="kv">cover</code>, <code class="kv">contain</code></td>
+          </tr>
+          <tr>
+            <td><code class="kv">text-decoration</code></td>
+            <td>Efectos de subrayado, tachado u otras decoraciones del texto.</td>
+            <td><code class="kv">underline</code>, <code class="kv">line-through</code>, <code class="kv">none</code></td>
+          </tr>
+          <tr>
+            <td><code class="kv">float</code></td>
+            <td>Alinear un elemento a la izquierda o derecha, permitiendo que el texto lo rodee.</td>
+            <td><code class="kv">left</code>, <code class="kv">right</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel" aria-labelledby="ejemplos-title">
+      <h2 id="ejemplos-title" style="margin-top:0">Ejemplos visuales</h2>
+
+      <div class="examples">
+        <div class="example ex-color">
+          <strong>color (texto)</strong>
+          <div class="box-sample">Este texto usa <code class="kv">color: blue;</code></div>
+        </div>
+
+        <div class="example ex-border">
+          <strong>border (shorthand)</strong>
+          <div class="box-sample">Borde: <code class="kv">2px solid black</code></div>
+        </div>
+
+        <div class="example ex-bg">
+          <strong>background + color</strong>
+          <div class="box-sample">Fondo con degradado y texto centrado</div>
+        </div>
+
+        <div class="example ex-space">
+          <strong>margin / padding</strong>
+          <div class="box-sample">margin: <code class="kv">10px 5px 10px 5px</code> — padding aplicado</div>
+        </div>
+
+        <div class="example ex-bgimg">
+          <strong>background-size</strong>
+          <div class="box-sample">Imagen de fondo (background-size: cover)</div>
+        </div>
+
+        <div class="example ex-td">
+          <strong>text-decoration</strong>
+          <div class="box-sample">Texto con <code class="kv">text-decoration: underline</code></div>
+        </div>
+
+        <div class="example ex-float">
+          <strong>float</strong>
+          <div class="float-box">Float left</div>
+          <div class="box-sample" style="padding-top:6px;">
+            Este párrafo muestra cómo un pequeño bloque a la izquierda es ocupado por un elemento con <code class="kv">float:left</code> y el texto lo rodea.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer style="margin-top:18px;color:var(--gris);font-size:.9rem">
+      <p>Nota: Este glosario fue construido con ayuda de una inteligencia artificial que me ayudó a poner los ejemplos en la parte de "Ejemplos visuales"</p>
+    </footer>
+  </div>
+</body>
+</html>
